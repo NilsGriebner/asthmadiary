@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nextcloud package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud 3.14159\n"
+"Report-Msgid-Bugs-To: translations\\@example.com\n"
+"POT-Creation-Date: 2019-05-29 07:45+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Asthma Diary"
+msgstr "Asthma Diary"
+
+msgid "Medication"
+msgstr "Medikamente"
+
+msgid "1. Medication"
+msgstr "1. Medikament"
+
+msgid "1. Dose"
+msgstr "1. Dosis"
+
+msgid "2. Medication"
+msgstr "2. Medikament"
+
+msgid "2. Dose"
+msgstr "2. Dosis"
+
+msgid "3. Medication"
+msgstr "3. Medikament"
+
+msgid "3. Dose"
+msgstr "3. Dosis"
+
+msgid "PRN Medication Dose"
+msgstr "Hübe Notfallmedikament"
+
+msgid "Symptoms"
+msgstr "Symptome"
+
+msgid "Cough"
+msgstr "Husten"
+
+msgid "No"
+msgstr "Kein"
+
+msgid "Low"
+msgstr "Wenig"
+
+msgid "Medium"
+msgstr "Mittel"
+
+msgid "High"
+msgstr "Stark"
+
+msgid "Breathlessness"
+msgstr "Atemnot"
+
+msgid "Phlegm"
+msgstr "Auswurf"
+
+msgid "Other Symptoms and Notes"
+msgstr "Andere Symptome und Notizen"
+
+msgid "Write down other symtpoms or notes"
+msgstr "Hier ist Platz für andere Symptome und Notizen"
+
+msgid "Peak-Flow Values"
+msgstr "Peak-Flow Werte"
+
+msgid "Value"
+msgstr "Wert"
+
+msgid "Peak-Flow value"
+msgstr "Peak-Flow Wert"
+
+msgid "Daytime"
+msgstr "Uhrzeit"
+
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Time"
+msgstr "Zeit"
+
+msgid "PRN Medication Puffs"
+msgstr "Hübe Notfallmedikament"
+
+msgid "Symptoms and Measurements"
+msgstr "Symptome und Messungen"
+
+msgid "Statistics"
+msgstr "Statistik"
+
+msgid "Download PDF"
+msgstr "PDF herunterladen"
+
+msgid "Unable to fetch data from server"
+msgstr "Server ist nicht erreichbar"
+
+msgid "Unable to delete data from server"
+msgstr "Server ist nicht erreichbar. Daten löschen nicht möglich"
+
+msgid "Unable to submit data"
+msgstr "Server ist nicht erreichbar. Daten absenden nicht möglich"
+
+msgid "For every medication a dose is required!"
+msgstr "Jedes Medikament braucht eine Dosis!"
+
+msgid "Allowed characters: A-Z, a-z, 0-9"
+msgstr "Erlaubte Zeichen sind: A-Z a-z 0-9"
+
+msgid "You provided a wrong value for Cough, Breathlessness or Phlegm!"
+msgstr "Die Eingabe für Husten, Atemnot oder Auswurf ist falsch!"
+
+msgid "Allowed characters: 0-9"
+msgstr "Erlaubte Werte sind: 0-9"
+
+msgid "Please correct your input first!"
+msgstr "Bitte korrigiere zuerst deine Eingabe!"
+
+msgid "Time format"
+msgstr "Zeit Format"
+
+msgid "Provide a number between 1 and 900"
+msgstr "Erlaubt sind Nummern zwischen 1 und 900"
+
+msgid "Value and time are required"
+msgstr "Wert und Zeit müssen angegeben werden"
+
+msgid "A value with this time already exist!"
+msgstr "Eine Wert mit dieser Uhrzeit existiert bereits"
+
+msgid "You exceeded the max length of 100 characters"
+msgstr "Es sind nur 100 Zeichen erlaubt"
+
+msgid "You need to save your measurement first"
+msgstr "Bitte zuerst die Messung speichern"
+
+msgid "Export PDF"
+msgstr "PDF exportieren"
+
+msgid "Export CSV"
+msgstr "CSV exportieren"
+
+msgid "Export all charts"
+msgstr "Alle Diagramme exportieren"
+
+msgid "Monthly statistics for "
+msgstr "Monatliche Statistik für "

@@ -1,0 +1,105 @@
+/*!
+ * *
+ *  *
+ *  * @copyright Copyright (c) 2019, Nils Griebner (nils@nils-griebner.de)
+ *  *
+ *  * @license GNU AGPL version 3 or any later version
+ *  *
+ *  * This program is free software: you can redistribute it and/or modify
+ *  * it under the terms of the GNU Affero General Public License as
+ *  * published by the Free Software Foundation, either version 3 of the
+ *  * License, or (at your option) any later version.
+ *  *
+ *  * This program is distributed in the hope that it will be useful,
+ *  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  * GNU Affero General Public License for more details.
+ *  *
+ *  * You should have received a copy of the GNU Affero General Public License
+ *  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  *
+ *
+ */
+
+@media only screen and (max-width: 768px) {
+
+  .app-content-detail {
+    width: 100%
+  }
+
+  .app-content-list {
+    width: 100% !important;
+  }
+
+  .asthmadiary_flex_row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*Stretch measurement inputs to full width*/
+  #asthmadiary_medication1_input {
+    width: 90% !important;
+  }
+
+  #asthmadiary_medication2_input {
+    width: 90% !important;
+  }
+
+  #asthmadiary_medication3_input {
+    width: 90% !important;
+  }
+
+  #asthmadiary_dose1_input {
+    width: 90% !important;
+  }
+
+  #asthmadiary_dose2_input {
+    width: 90% !important;
+  }
+
+  #asthmadiary_dose3_input {
+    width: 90% !important;
+  }
+
+  #asthmadiary_prn_input {
+    width: 90% !important;
+  }
+
+  #asthmadiary_measurement_content_header_full_icons {
+    justify-content: space-around !important;
+  }
+
+  #asthmadiary_measurement_content_header_full_text {
+    width: 100% !important;
+    padding-left: 8%;
+  }
+
+  .asthmadiary_navigation_scroll_button {
+    background-color: transparent;
+    border-radius: 0px;
+    height: 44px;
+    width: 44px;
+    z-index: 99;
+    top: 50px;
+    bottom: unset;
+    right: 0px;
+    padding: 14px;
+  }
+
+  .asthmadiary_navigation_scroll_button_back_to_list {
+    height: 44px;
+    width: 44px;
+    position: fixed;
+    z-index: 146;
+    top: 50px;
+    right: 44px;
+    opacity: 0.6;
+    padding: 14px;
+  }
+
+  .asthmadiary_statistics_chart_wrapper {
+    width: 98%;
+    height: 400px;
+  }
+}
+

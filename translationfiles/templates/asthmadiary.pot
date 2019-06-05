@@ -1,0 +1,156 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nextcloud package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud 3.14159\n"
+"Report-Msgid-Bugs-To: translations\\@example.com\n"
+"POT-Creation-Date: 2019-05-29 07:45+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Asthma Diary"
+msgstr ""
+
+msgid "Epic Summary"
+msgstr ""
+
+msgid "Epic description"
+msgstr ""
+
+msgid "Medication"
+msgstr ""
+
+msgid "1. Medication"
+msgstr ""
+
+msgid "1. Dose"
+msgstr ""
+
+msgid "2. Medication"
+msgstr ""
+
+msgid "2. Dose"
+msgstr ""
+
+msgid "3. Medication"
+msgstr ""
+
+msgid "3. Dose"
+msgstr ""
+
+msgid "PRN Medication Dose"
+msgstr ""
+
+msgid "Symptoms"
+msgstr ""
+
+msgid "Cough"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Low"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "High"
+msgstr ""
+
+msgid "Breathlessness"
+msgstr ""
+
+msgid "Phlegm"
+msgstr ""
+
+msgid "Other Symptoms and Notes"
+msgstr ""
+
+msgid "Write down other symtpoms or notes"
+msgstr ""
+
+msgid "Peak-Flow Values"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Peak-Flow value"
+msgstr ""
+
+msgid "Daytime"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "PRN Medication Puffs"
+msgstr ""
+
+msgid "Symptoms and Measurements"
+msgstr ""
+
+msgid "Statistics"
+msgstr ""
+
+msgid "Download PDF"
+msgstr ""
+
+msgid "Unable to fetch data from server"
+msgstr ""
+
+msgid "Unable to delete data from server"
+msgstr ""
+
+msgid "Unable to submit data"
+msgstr ""
+
+msgid "For every medication a dose is required!"
+msgstr ""
+
+msgid "Allowed characters: A-Z, a-z, 0-9"
+msgstr ""
+
+msgid "You provided a wrong value for Cough, Breathlessness or Phlegm!"
+msgstr ""
+
+msgid "Allowed characters: 0-9"
+msgstr ""
+
+msgid "Please correct your input first!"
+msgstr ""
+
+msgid "Time format"
+msgstr ""
+
+msgid "Provide a number between 1 and 900"
+msgstr ""
+
+msgid "Value and time are required"
+msgstr ""
+
+msgid "A value with this time already exist!"
+msgstr ""
+
+msgid "You exceeded the max length of 100 characters"
+msgstr ""
+
+msgid "You need to save your measurement first"
+msgstr ""

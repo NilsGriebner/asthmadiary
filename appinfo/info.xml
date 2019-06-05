@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>asthmadiary</id>
+    <name>Asthma Diary</name>
+    <description>Asthma diary app for Nextcloud</description>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="nils@nils-griebner.de" >Nils Griebner</author>
+    <namespace>AsthmaDiary</namespace>
+    <category>tools</category>
+    <bugs>https://github.com/NilsGriebner/asthmadiary</bugs>
+    <dependencies>
+        <nextcloud min-version="16" max-version="16"/>
+    </dependencies>
+    <navigations>
+        <navigation>
+            <name>Asthma Diary</name>
+            <route>asthmadiary.page.index</route>
+        </navigation>
+    </navigations>
+</info>
