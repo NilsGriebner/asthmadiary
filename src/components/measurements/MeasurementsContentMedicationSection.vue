@@ -42,9 +42,9 @@
 							   v-validate="{ required: medication1Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
 							   @input="updateMedication1"
 						/>
-						<div class="icon-delete"
+						<a class="icon-delete"
 							 v-on:click.prevent="updateMedication1(null)">
-						</div>
+						</a>
 					</div>
 					<span class="asthmadiary_error_message_text">
 						{{ errors.first('medication1') }}
@@ -63,9 +63,9 @@
 							   v-validate="{ required: dose1Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
 							   @input="updateDose1"
 						/>
-						<div class="icon-delete"
+						<a class="icon-delete"
 							 v-on:click.prevent="updateDose1(null)">
-						</div>
+						</a>
 					</div>
 					<span class="asthmadiary_error_message_text">
 						{{ errors.first('dose1') }}
@@ -85,9 +85,9 @@
 							   :value="activeMeasurement.medication2"
 							   v-validate="{ required: medication2Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
 							   @input="updateMedication2"/>
-						<div class="icon-delete"
+						<a class="icon-delete"
 							 v-on:click.prevent="updateMedication2(null)">
-						</div>
+						</a>
 					</div>
 					<span class="asthmadiary_error_message_text">
 						{{ errors.first('medication2') }}
@@ -106,9 +106,9 @@
 							   v-validate="{ required: dose2Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
 							   @input="updateDose2"
 						/>
-						<div class="icon-delete"
+						<a class="icon-delete"
 							 v-on:click.prevent="updateDose2(null)">
-						</div>
+						</a>
 					</div>
 					<span class="asthmadiary_error_message_text">
 						{{ errors.first('dose2') }}
@@ -128,9 +128,9 @@
 							   :value="activeMeasurement.medication3"
 							   v-validate="{ required: medication3Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
 							   @input="updateMedication3"/>
-						<div class="icon-delete"
+						<a class="icon-delete"
 							 v-on:click.prevent="updateMedication3(null)">
-						</div>
+						</a>
 					</div>
 					<span class="asthmadiary_error_message_text">
 						{{ errors.first('medication3') }}
@@ -147,9 +147,9 @@
 							   v-validate="{ required: dose3Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
 							   @input="updateDose3"
 						/>
-						<div class="icon-delete"
+						<a class="icon-delete"
 							 v-on:click.prevent="updateDose3(null)">
-						</div>
+						</a>
 					</div>
 					<span class="asthmadiary_error_message_text">
 						{{ errors.first('dose3') }}
@@ -171,9 +171,9 @@
 							   v-validate="{ regex:/^[0-9]+$/, max_value: 100, min_value: 0 }"
 							   @input="updatePrnMedicationPuffs"
 						/>
-						<div class="icon-delete"
+						<a class="icon-delete"
 							 v-on:click.prevent="updatePrnMedicationPuffs(null)">
-						</div>
+						</a>
 					</div>
 					<span class="asthmadiary_error_message_text">
 						{{ errors.first('prn_medication_puffs') }}
