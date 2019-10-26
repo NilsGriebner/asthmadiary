@@ -59,3 +59,5 @@ export const MEASUREMENT_VALUE_INPUT_LENGTH_ERROR =
 	t('asthmadiary', "You exceeded the max length of 100 characters");
 export const MEASUREMENT_VALUE_SUBMIT_MEASUREMENT_FIRST_ERROR =
 	t('asthmadiary', "You need to save your measurement first");
+export const MEASUREMENT_NO_PREV_MEDICATION =
+	t('asthmadiary', "No medication available for previous day");

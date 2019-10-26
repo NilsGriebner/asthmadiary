@@ -50,6 +50,12 @@
   flex-direction: row;
 }
 
+.asthmadiary_flex_headline_with_action {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .asthmadiary_navigation_scroll_button {
   position: fixed;
   z-index: 146;
@@ -80,7 +86,7 @@
   flex-direction: row;
   justify-content: flex-end;
   padding-right: 1%;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .asthmadiary_header_first_line {

@@ -44,6 +44,7 @@ import {
 	BASE_URL,
 	MEASUREMENTS_URL,
 	VALUE_URL,
+	MEASUREMENT_NO_PREV_MEDICATION
 } from './Strings';
 import {
 	createMeasurementDummy,
@@ -55,6 +56,7 @@ import {
 	getValueUrl,
 	getMeasurementPositionByDate,
 	calculateBackgroundColor,
+	getMeasurementByDate,
 } from './helper';
 
 
@@ -77,6 +79,7 @@ export {MEASUREMENT_VALUE_INPUT_REQUIRED_ERROR};
 export {MEASUREMENT_VALUE_INPUT_DOUBLE_ERROR};
 export {MEASUREMENT_VALUE_INPUT_LENGTH_ERROR};
 export {MEASUREMENT_VALUE_SUBMIT_MEASUREMENT_FIRST_ERROR};
+export {MEASUREMENT_NO_PREV_MEDICATION};
 export {createMeasurementDummy};
 export {createNewMeasurement};
 export {calculateFrom};
@@ -86,6 +89,7 @@ export {getActiveMeasurementUrl};
 export {getValueUrl};
 export {getMeasurementPositionByDate};
 export {calculateBackgroundColor};
+export {getMeasurementByDate};
 export {BASE_URL};
 export {MEASUREMENTS_URL};
 export {VALUE_URL};

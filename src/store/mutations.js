@@ -65,48 +65,60 @@ export default {
 	updateMedication1 (state, e) {
 		if (e === null) {
 			state.activeMeasurement.medication1 = null;
-		} else {
+		} else if (e.target) {
 			state.activeMeasurement.medication1 = e.target.value;
+		} else {
+			state.activeMeasurement.medication1 = e;
 		}
 	},
 
 	updateMedication2 (state, e) {
 		if (e === null) {
 			state.activeMeasurement.medication2 = null;
-		} else {
+		} else if (e.target) {
 			state.activeMeasurement.medication2 = e.target.value;
+		} else {
+			state.activeMeasurement.medication2 = e;
 		}
 	},
 
 	updateMedication3 (state, e) {
 		if (e === null) {
 			state.activeMeasurement.medication3 = null;
-		} else {
+		} else if (e.target) {
 			state.activeMeasurement.medication3 = e.target.value;
+		} else {
+			state.activeMeasurement.medication3 = e;
 		}
 	},
 
 	updateDose1 (state, e) {
 		if (e === null) {
 			state.activeMeasurement.dose1 = null;
-		} else {
+		} else if (e.target) {
 			state.activeMeasurement.dose1 = e.target.value;
+		} else {
+			state.activeMeasurement.dose1 = e;
 		}
 	},
 
 	updateDose2 (state, e) {
 		if (e === null) {
 			state.activeMeasurement.dose2 = null;
-		} else {
+		} else if (e.target) {
 			state.activeMeasurement.dose2 = e.target.value;
+		} else {
+			state.activeMeasurement.dose2 = e;
 		}
 	},
 
 	updateDose3 (state, e) {
 		if (e === null) {
 			state.activeMeasurement.dose3 = null;
-		} else {
+		} else if (e.target) {
 			state.activeMeasurement.dose3 = e.target.value;
+		} else {
+			state.activeMeasurement.dose3 = e;
 		}
 	},
 
@@ -121,8 +133,10 @@ export default {
 	updatePrnMedicationPuffs (state, e) {
 		if (e === null) {
 			state.activeMeasurement.prn_medication_puffs = null;
-		} else {
+		} else if (e.target) {
 			state.activeMeasurement.prn_medication_puffs = e.target.value;
+		} else {
+			state.activeMeasurement.prn_medication_puffs = e;
 		}
 	},
 

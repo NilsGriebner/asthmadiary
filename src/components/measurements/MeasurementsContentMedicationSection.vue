@@ -22,176 +22,198 @@
   -->
 
 <template>
-	<div>
-		<div class="asthmadiary_flex_headline">
-			<div class="icon-category-installed"></div>
-			<h3> {{ t('asthmadiary', 'Medication') }}: </h3>
-		</div>
-		<div class="asthmadiary_flex_row">
-			<div class="asthmadiary_flex_column">
-				<div class="asthmadiary_flex_column">
-					<label for="asthmadiary_medication1_input">
-						{{ t('asthmadiary', '1. Medication') }}:
-					</label>
-					<div class="asthmadiary_flex_row_persistent">
-						<input name="medication1"
-							   id="asthmadiary_medication1_input"
-							   :placeholder="t('asthmadiary', '1. Medication')"
-							   :readonly="mode === select"
-							   :value="activeMeasurement.medication1"
-							   v-validate="{ required: medication1Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
-							   @input="updateMedication1"
-						/>
-						<a class="icon-delete"
-							 v-on:click.prevent="updateMedication1(null)">
-						</a>
-					</div>
-					<span class="asthmadiary_error_message_text">
+    <div>
+        <div class="asthmadiary_flex_headline_with_action">
+            <div class="asthmadiary_flex_headline">
+                <div class="icon-category-installed"></div>
+                <h3> {{ t('asthmadiary', 'Medication') }}: </h3>
+            </div>
+            <Actions>
+                <ActionButton icon="icon-external"
+                              @click="getMedicationFromPrevDay()">
+                    {{ t('asthmadiary', 'Get from yesterday') }}
+                </ActionButton>
+            </Actions>
+        </div>
+        <div class="asthmadiary_flex_row">
+            <div class="asthmadiary_flex_column">
+                <div class="asthmadiary_flex_column">
+                    <label for="asthmadiary_medication1_input">
+                        {{ t('asthmadiary', '1. Medication') }}:
+                    </label>
+                    <div class="asthmadiary_flex_row_persistent">
+                        <input name="medication1"
+                               id="asthmadiary_medication1_input"
+                               :placeholder="t('asthmadiary', '1. Medication')"
+                               :readonly="mode === select"
+                               :value="activeMeasurement.medication1"
+                               v-validate="{ required: medication1Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               @input="updateMedication1"
+                        />
+                        <a class="icon-delete"
+                           v-on:click.prevent="updateMedication1(null)">
+                        </a>
+                    </div>
+                    <span class="asthmadiary_error_message_text">
 						{{ errors.first('medication1') }}
 					</span>
-				</div>
-				<div class="asthmadiary_flex_column">
-					<label for="asthmadiary_dose1_input">
-						{{ t('asthmadiary', '1. Dose') }}:
-					</label>
-					<div class="asthmadiary_flex_row_persistent">
-						<input name="dose1"
-							   id="asthmadiary_dose1_input"
-							   :placeholder="t('asthmadiary', '1.Dose')"
-							   :readonly="mode === select"
-							   :value="activeMeasurement.dose1"
-							   v-validate="{ required: dose1Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
-							   @input="updateDose1"
-						/>
-						<a class="icon-delete"
-							 v-on:click.prevent="updateDose1(null)">
-						</a>
-					</div>
-					<span class="asthmadiary_error_message_text">
+                </div>
+                <div class="asthmadiary_flex_column">
+                    <label for="asthmadiary_dose1_input">
+                        {{ t('asthmadiary', '1. Dose') }}:
+                    </label>
+                    <div class="asthmadiary_flex_row_persistent">
+                        <input name="dose1"
+                               id="asthmadiary_dose1_input"
+                               :placeholder="t('asthmadiary', '1.Dose')"
+                               :readonly="mode === select"
+                               :value="activeMeasurement.dose1"
+                               v-validate="{ required: dose1Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               @input="updateDose1"
+                        />
+                        <a class="icon-delete"
+                           v-on:click.prevent="updateDose1(null)">
+                        </a>
+                    </div>
+                    <span class="asthmadiary_error_message_text">
 						{{ errors.first('dose1') }}
 					</span>
-				</div>
-			</div>
-			<div class="asthmadiary_flex_column">
-				<div class="asthmadiary_flex_column">
-					<label for="asthmadiary_medication2_input">
-						{{ t('asthmadiary', '2. Medication') }}:
-					</label>
-					<div class="asthmadiary_flex_row_persistent">
-						<input name="medication2"
-							   id="asthmadiary_medication2_input"
-							   :placeholder="t('asthmadiary', '2. Medication')"
-							   :readonly="mode === select"
-							   :value="activeMeasurement.medication2"
-							   v-validate="{ required: medication2Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
-							   @input="updateMedication2"/>
-						<a class="icon-delete"
-							 v-on:click.prevent="updateMedication2(null)">
-						</a>
-					</div>
-					<span class="asthmadiary_error_message_text">
+                </div>
+            </div>
+            <div class="asthmadiary_flex_column">
+                <div class="asthmadiary_flex_column">
+                    <label for="asthmadiary_medication2_input">
+                        {{ t('asthmadiary', '2. Medication') }}:
+                    </label>
+                    <div class="asthmadiary_flex_row_persistent">
+                        <input name="medication2"
+                               id="asthmadiary_medication2_input"
+                               :placeholder="t('asthmadiary', '2. Medication')"
+                               :readonly="mode === select"
+                               :value="activeMeasurement.medication2"
+                               v-validate="{ required: medication2Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               @input="updateMedication2"/>
+                        <a class="icon-delete"
+                           v-on:click.prevent="updateMedication2(null)">
+                        </a>
+                    </div>
+                    <span class="asthmadiary_error_message_text">
 						{{ errors.first('medication2') }}
 					</span>
-				</div>
-				<div class="asthmadiary_flex_column">
-					<label for="asthmadiary_dose2_input">
-						{{ t('asthmadiary', '2. Dose') }}:
-					</label>
-					<div class="asthmadiary_flex_row_persistent">
-						<input name="dose2"
-							   id="asthmadiary_dose2_input"
-							   :placeholder="t('asthmadiary', '2. Dose')"
-							   :readonly="mode === select"
-							   :value="activeMeasurement.dose2"
-							   v-validate="{ required: dose2Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
-							   @input="updateDose2"
-						/>
-						<a class="icon-delete"
-							 v-on:click.prevent="updateDose2(null)">
-						</a>
-					</div>
-					<span class="asthmadiary_error_message_text">
+                </div>
+                <div class="asthmadiary_flex_column">
+                    <label for="asthmadiary_dose2_input">
+                        {{ t('asthmadiary', '2. Dose') }}:
+                    </label>
+                    <div class="asthmadiary_flex_row_persistent">
+                        <input name="dose2"
+                               id="asthmadiary_dose2_input"
+                               :placeholder="t('asthmadiary', '2. Dose')"
+                               :readonly="mode === select"
+                               :value="activeMeasurement.dose2"
+                               v-validate="{ required: dose2Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               @input="updateDose2"
+                        />
+                        <a class="icon-delete"
+                           v-on:click.prevent="updateDose2(null)">
+                        </a>
+                    </div>
+                    <span class="asthmadiary_error_message_text">
 						{{ errors.first('dose2') }}
 					</span>
-				</div>
-			</div>
-			<div>
-				<div class="asthmadiary_flex_column">
-					<label for="asthmadiary_medication3_input">
-						{{ t('asthmadiary', '3. Medication') }}:
-					</label>
-					<div class="asthmadiary_flex_row_persistent">
-						<input name="medication3"
-							   id="asthmadiary_medication3_input"
-							   :placeholder="t('asthmadiary', '3. Medication')"
-							   :readonly="mode === select"
-							   :value="activeMeasurement.medication3"
-							   v-validate="{ required: medication3Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
-							   @input="updateMedication3"/>
-						<a class="icon-delete"
-							 v-on:click.prevent="updateMedication3(null)">
-						</a>
-					</div>
-					<span class="asthmadiary_error_message_text">
+                </div>
+            </div>
+            <div>
+                <div class="asthmadiary_flex_column">
+                    <label for="asthmadiary_medication3_input">
+                        {{ t('asthmadiary', '3. Medication') }}:
+                    </label>
+                    <div class="asthmadiary_flex_row_persistent">
+                        <input name="medication3"
+                               id="asthmadiary_medication3_input"
+                               :placeholder="t('asthmadiary', '3. Medication')"
+                               :readonly="mode === select"
+                               :value="activeMeasurement.medication3"
+                               v-validate="{ required: medication3Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               @input="updateMedication3"/>
+                        <a class="icon-delete"
+                           v-on:click.prevent="updateMedication3(null)">
+                        </a>
+                    </div>
+                    <span class="asthmadiary_error_message_text">
 						{{ errors.first('medication3') }}
 					</span>
-					<label for="asthmadiary_dose3_input">
-						{{ t('asthmadiary', '3. Dose') }}:
-					</label>
-					<div class="asthmadiary_flex_row_persistent">
-						<input name="dose3"
-							   id="asthmadiary_dose3_input"
-							   :placeholder="t('asthmadiary', '3. Dose')"
-							   :readonly="mode === select"
-							   :value="activeMeasurement.dose3"
-							   v-validate="{ required: dose3Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
-							   @input="updateDose3"
-						/>
-						<a class="icon-delete"
-							 v-on:click.prevent="updateDose3(null)">
-						</a>
-					</div>
-					<span class="asthmadiary_error_message_text">
+                    <label for="asthmadiary_dose3_input">
+                        {{ t('asthmadiary', '3. Dose') }}:
+                    </label>
+                    <div class="asthmadiary_flex_row_persistent">
+                        <input name="dose3"
+                               id="asthmadiary_dose3_input"
+                               :placeholder="t('asthmadiary', '3. Dose')"
+                               :readonly="mode === select"
+                               :value="activeMeasurement.dose3"
+                               v-validate="{ required: dose3Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               @input="updateDose3"
+                        />
+                        <a class="icon-delete"
+                           v-on:click.prevent="updateDose3(null)">
+                        </a>
+                    </div>
+                    <span class="asthmadiary_error_message_text">
 						{{ errors.first('dose3') }}
 					</span>
-				</div>
-			</div>
-			<div>
-				<div class="asthmadiary_flex_column">
-					<label for="asthmadiary_prn_input">
-						{{ t('asthmadiary',
-						'PRN Medication Dose') }}:
-					</label>
-					<div class="asthmadiary_flex_row_persistent">
-						<input name="prn_medication_puffs"
-							   id="asthmadiary_prn_input"
-							   :placeholder="t('asthmadiary', 'PRN Medication Dose')"
-							   :readonly="mode === select"
-							   :value="activeMeasurement.prn_medication_puffs"
-							   v-validate="{ regex:/^[0-9]+$/, max_value: 100, min_value: 0 }"
-							   @input="updatePrnMedicationPuffs"
-						/>
-						<a class="icon-delete"
-							 v-on:click.prevent="updatePrnMedicationPuffs(null)">
-						</a>
-					</div>
-					<span class="asthmadiary_error_message_text">
+                </div>
+            </div>
+            <div>
+                <div class="asthmadiary_flex_column">
+                    <label for="asthmadiary_prn_input">
+                        {{ t('asthmadiary',
+                        'PRN Medication Dose') }}:
+                    </label>
+                    <div class="asthmadiary_flex_row_persistent">
+                        <input name="prn_medication_puffs"
+                               id="asthmadiary_prn_input"
+                               :placeholder="t('asthmadiary', 'PRN Medication Dose')"
+                               :readonly="mode === select"
+                               :value="activeMeasurement.prn_medication_puffs"
+                               v-validate="{ regex:/^[0-9]+$/, max_value: 100, min_value: 0 }"
+                               @input="updatePrnMedicationPuffs"
+                        />
+                        <a class="icon-delete"
+                           v-on:click.prevent="updatePrnMedicationPuffs(null)">
+                        </a>
+                    </div>
+                    <span class="asthmadiary_error_message_text">
 						{{ errors.first('prn_medication_puffs') }}
 					</span>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+	import moment from 'moment';
+
 	import {mapState} from 'vuex';
 
-	import {VIEW_MODES} from "../../services/utils";
+	import {
+		getMeasurementByDate,
+		VIEW_MODES,
+		API_DATE_FORMAT,
+		MEASUREMENT_NO_PREV_MEDICATION
+	} from "../../services/utils";
+
+	import {Actions, ActionButton} from 'nextcloud-vue';
 
 	export default {
 
 		name: "MeasurementsContentMedicationSection",
+
+		components: {
+			ActionButton,
+			Actions
+		},
 
 		computed: {
 			...mapState({
@@ -337,6 +359,51 @@
 
 			validateInput () {
 				return this.$validator.validate();
+			},
+
+			getMedicationFromPrevDay () {
+				if (this.mode === VIEW_MODES.SELECT) {
+					if (this.activeMeasurement.id === null) {
+						this.$store.dispatch('updateMode', VIEW_MODES.ADD);
+					} else {
+						this.$store.dispatch('updateMode', VIEW_MODES.EDIT);
+					}
+				}
+
+				const date = moment(this.activeMeasurement.date).subtract(1, 'days').format(API_DATE_FORMAT);
+
+				getMeasurementByDate(date).then(response => {
+					if (response.data.length === 0) {
+						alert(MEASUREMENT_NO_PREV_MEDICATION);
+					} else {
+						const measurement = response.data.shift();
+						const medication1 = measurement.medication1;
+						const dose1 = measurement.dose1;
+						const medication2 = measurement.medication2;
+						const dose2 = measurement.dose2;
+						const medication3 = measurement.medication3;
+						const dose3 = measurement.dose3;
+
+						if (medication1 || medication2 || medication3) {
+							if (medication1) {
+								this.updateMedication1(medication1);
+								this.updateDose1(dose1);
+							}
+
+							if (medication2) {
+								this.updateMedication2(medication2);
+								this.updateDose2(dose2);
+							}
+
+							if (medication3) {
+								this.updateMedication3(medication3);
+								this.updateDose3(dose3);
+							}
+						} else {
+							alert(MEASUREMENT_NO_PREV_MEDICATION);
+						}
+					}
+				});
 			},
 		}
 	}

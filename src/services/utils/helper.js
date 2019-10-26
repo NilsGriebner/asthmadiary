@@ -26,6 +26,7 @@ import {MEASUREMENTS_URL} from './Strings';
 import {VALUE_URL} from './Strings';
 
 import Measurement from '../../Models/measurement';
+import axios from "axios";
 
 export function createMeasurementDummy (day) {
 	let paramObject = {};
@@ -57,6 +58,15 @@ export function createNewMeasurement (context, measurement) {
 	}
 
 	return new Measurement(measurement);
+}
+
+export function getMeasurementByDate (date) {
+	return axios.get(MEASUREMENTS_URL, {
+		params: {
+			'from': date,
+			'to': date
+		}
+	});
 }
 
 export function calculateFrom (date) {
