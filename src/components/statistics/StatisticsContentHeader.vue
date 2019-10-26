@@ -22,18 +22,21 @@
   -->
 
 <template>
-	<div id="asthmadiary_statistics_header"
-		 :style="{'background-color': colorBackground()}">
-		<div>
+    <div v-if="!mobile"
+         id="asthmadiary_statistics_header"
+         :style="{'background-color': colorBackground()}">
+        <div>
 			<span class="asthmadiary_header_first_line">
 				{{ t('asthmadiary', 'Monthly statistics for ') + headerMonth }}
 			</span>
-		</div>
-	</div>
+        </div>
+    </div>
 </template>
 
 <script>
 	import {calculateBackgroundColor} from '../../services/utils';
+
+	import isMobile from 'nextcloud-vue/dist/Mixins/isMobile'
 
 	import {mapState} from 'vuex';
 	import moment from 'moment';
@@ -41,6 +44,16 @@
 	export default {
 
 		name: "StatisticsContentHeader",
+
+        data () {
+			return {
+				mobile: isMobile
+            }
+        },
+
+        mixins: {
+			isMobile
+        },
 
 		computed: {
 			...mapState({

@@ -22,23 +22,26 @@
   -->
 
 <template>
-	<div id="asthmadiary_measurement_content_header_full"
-		 :style="{ 'background-color': setColor(activeMeasurement.date) }">
-		<div id="asthmadiary_measurement_content_header_full_text">
-			<div>
+    <div v-if="!mobile"
+         id="asthmadiary_measurement_content_header_full"
+         :style="{ 'background-color': setColor(activeMeasurement.date) }">
+        <div id="asthmadiary_measurement_content_header_full_text">
+            <div>
 				<span class="asthmadiary_header_first_line">
 					{{ formatDate }}
 				</span>
-			</div>
-			<div v-if="activeMeasurement.user_id !== null">
-				{{ activeMeasurement.user_id }}
-			</div>
-		</div>
-	</div>
+            </div>
+            <div v-if="activeMeasurement.user_id !== null">
+                {{ activeMeasurement.user_id }}
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
 	import {mapState} from 'vuex';
+
+	import isMobile from 'nextcloud-vue/dist/Mixins/isMobile'
 
 	import {calculateBackgroundColor} from '../../services/utils';
 	import {API_DATE_FORMAT} from '../../services/utils';
@@ -46,6 +49,16 @@
 	export default {
 
 		name: "MeasurementsContentHeader",
+
+        data () {
+			return {
+		        mobile: isMobile
+            }
+        },
+
+        mixins: {
+			isMobile
+        },
 
 		computed: {
 			...mapState({
