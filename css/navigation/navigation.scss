@@ -28,8 +28,8 @@
   justify-content: space-between
 }
 
-#nav_datepicker_wrapper button:enabled {
-  width: 10%;
+#nav_datepicker_wrapper button {
+  width: 10% !important;
 }
 
 #nav_date_div {
