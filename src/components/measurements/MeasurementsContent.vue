@@ -22,91 +22,95 @@
   -->
 
 <script>
-    import {mapState} from 'vuex';
+	import {mapState} from 'vuex';
 
-    import MeasurementsContentValueList from './MeasurementsContentValueList';
-    import MeasurementsContentHeader from './MeasurementsContentHeader';
-    import MeasurementsContentMedicationSection
-        from './MeasurementsContentMedicationSection';
-    import MeasurementsContentSymptomsSection
-        from './MeasurementsContentSymptomsSection';
-    import MeasurementsContentOtherSymptomsSection
-        from './MeasurementsContentOtherSymptomsSection';
+	import MeasurementsContentValueList from './MeasurementsContentValueList';
+	import MeasurementsContentHeader from './MeasurementsContentHeader';
+	import MeasurementsContentMedicationSection
+		from './MeasurementsContentMedicationSection';
+	import MeasurementsContentSymptomsSection
+		from './MeasurementsContentSymptomsSection';
+	import MeasurementsContentOtherSymptomsSection
+		from './MeasurementsContentOtherSymptomsSection';
 
-    import {VIEW_MODES} from '../../services/utils';
-    import {MEASUREMENT_INPUT_CORRECT_FORM} from '../../services/utils';
+	import {VIEW_MODES} from '../../services/utils';
+	import {MEASUREMENT_INPUT_CORRECT_FORM} from '../../services/utils';
 
-    export default {
+	export default {
 
-        name: 'MeasurementsContent',
+		name: 'MeasurementsContent',
 
-        components: {
-            MeasurementsContentValueList,
-            MeasurementsContentHeader,
-            MeasurementsContentMedicationSection,
-            MeasurementsContentSymptomsSection,
-            MeasurementsContentOtherSymptomsSection
-        },
+		components: {
+			MeasurementsContentValueList,
+			MeasurementsContentHeader,
+			MeasurementsContentMedicationSection,
+			MeasurementsContentSymptomsSection,
+			MeasurementsContentOtherSymptomsSection
+		},
 
-        data() {
-            return {
-                medicationValid: false,
-                symptomsValid: false,
-                otherSymptomsValid: false
-            }
-        },
+		model: {
+			event: 'switch-mobile-list'
+		},
 
-        model: {
-            event: 'switch-mobile-list'
-        },
+		computed: {
 
-        computed: {
+			...mapState({
+				activeMeasurement: state => state.measurements.activeMeasurement,
+			}),
 
-            ...mapState({
-                activeMeasurement: state => state.measurements.activeMeasurement,
-            }),
+			measurementSubmitErrorMessage () {
+				return MEASUREMENT_INPUT_CORRECT_FORM;
+			},
+		},
 
-            measurementSubmitErrorMessage() {
-                return MEASUREMENT_INPUT_CORRECT_FORM;
-            },
-        },
+		methods: {
 
-        methods: {
+			addMeasurement () {
+				this.$store.dispatch('updateMode', VIEW_MODES.ADD);
+			},
 
-            addMeasurement() {
-                this.$store.dispatch('updateMode', VIEW_MODES.ADD);
-            },
+			submitMeasurement () {
+				this.$refs.medicationSection.validateInput()
+					.then(valid => {
+						if (valid) {
+							this.$refs.symptomsSection.validateInput()
+								.then(valid => {
+									if (valid) {
+										this.$refs.otherSymptomsSection.validateInput()
+											.then(valid => {
+												if (valid) {
+													this.$store.dispatch('addMeasurement');
+												} else {
+													this.alertSubmitError()
+												}
+											})
+									} else {
+										this.alertSubmitError()
+									}
+								})
+						} else {
+							this.alertSubmitError()
+						}
+					})
+			},
 
-            submitMeasurement() {
-                this.$refs.medicationSection.validateInput()
-                    .then(valid => this.medicationValid = valid);
+			editMeasurement () {
+				if (this.activeMeasurement.id === null) {
+					this.$store.dispatch('updateMode', VIEW_MODES.ADD);
+				} else {
+					this.$store.dispatch('updateMode', VIEW_MODES.EDIT);
+				}
+			},
 
-                this.$refs.symptomsSection.validateInput()
-                    .then(valid => this.symptomsValid = valid);
+			backToList () {
+				this.$emit('switch-mobile-list', true);
+			},
 
-                this.$refs.otherSymptomsSection.validateInput()
-                    .then(valid => this.otherSymptomsValid = valid);
-
-                if (this.medicationValid && this.symptomsValid && this.otherSymptomsValid) {
-                    this.$store.dispatch('addMeasurement');
-                } else {
-                    alert(this.measurementSubmitErrorMessage);
-                }
-            },
-
-            editMeasurement() {
-                if (this.activeMeasurement.id === null) {
-                    this.$store.dispatch('updateMode', VIEW_MODES.ADD);
-                } else {
-                    this.$store.dispatch('updateMode', VIEW_MODES.EDIT);
-                }
-            },
-
-            backToList() {
-                this.$emit('switch-mobile-list', true);
-            }
-        },
-    }
+			alertSubmitError () {
+				alert(this.measurementSubmitErrorMessage);
+			}
+		},
+	}
 </script>
 <template>
     <div class="app-content-detail">
