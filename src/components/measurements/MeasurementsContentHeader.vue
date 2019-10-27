@@ -50,14 +50,14 @@
 
 		name: "MeasurementsContentHeader",
 
+		mixins: [
+			isMobile
+		],
+
         data () {
 			return {
-		        mobile: isMobile
+		        mobile: this._isMobile()
             }
-        },
-
-        mixins: {
-			isMobile
         },
 
 		computed: {
