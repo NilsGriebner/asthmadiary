@@ -362,13 +362,6 @@
 			},
 
 			getMedicationFromPrevDay () {
-				if (this.mode === VIEW_MODES.SELECT) {
-					if (this.activeMeasurement.id === null) {
-						this.$store.dispatch('updateMode', VIEW_MODES.ADD);
-					} else {
-						this.$store.dispatch('updateMode', VIEW_MODES.EDIT);
-					}
-				}
 
 				const date = moment(this.activeMeasurement.date).subtract(1, 'days').format(API_DATE_FORMAT);
 
@@ -376,6 +369,15 @@
 					if (response.data.length === 0) {
 						alert(MEASUREMENT_NO_PREV_MEDICATION);
 					} else {
+
+						if (this.mode === VIEW_MODES.SELECT) {
+							if (this.activeMeasurement.id === null) {
+								this.$store.dispatch('updateMode', VIEW_MODES.ADD);
+							} else {
+								this.$store.dispatch('updateMode', VIEW_MODES.EDIT);
+							}
+						}
+
 						const measurement = response.data.shift();
 						const medication1 = measurement.medication1;
 						const dose1 = measurement.dose1;
