@@ -47,7 +47,7 @@
                                :placeholder="t('asthmadiary', '1. Medication')"
                                :readonly="mode === select"
                                :value="activeMeasurement.medication1"
-                               v-validate="{ required: medication1Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               v-validate="{ required: medication1Required, regex:/^[a-zA-Z0-9ÄÖÜäöü_ ]+$/, max: 100 }"
                                @input="updateMedication1"
                         />
                         <a class="icon-delete"
@@ -68,7 +68,7 @@
                                :placeholder="t('asthmadiary', '1.Dose')"
                                :readonly="mode === select"
                                :value="activeMeasurement.dose1"
-                               v-validate="{ required: dose1Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               v-validate="{ required: dose1Required, regex:/^[a-zA-Z0-9ÄÖÜäöü_ ]+$/, max: 100 }"
                                @input="updateDose1"
                         />
                         <a class="icon-delete"
@@ -91,7 +91,7 @@
                                :placeholder="t('asthmadiary', '2. Medication')"
                                :readonly="mode === select"
                                :value="activeMeasurement.medication2"
-                               v-validate="{ required: medication2Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               v-validate="{ required: medication2Required, regex:/^[a-zA-Z0-9ÄÖÜäöü_ ]+$/, max: 100 }"
                                @input="updateMedication2"/>
                         <a class="icon-delete"
                            v-on:click.prevent="updateMedication2(null)">
@@ -111,7 +111,7 @@
                                :placeholder="t('asthmadiary', '2. Dose')"
                                :readonly="mode === select"
                                :value="activeMeasurement.dose2"
-                               v-validate="{ required: dose2Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               v-validate="{ required: dose2Required, regex:/^[a-zA-Z0-9ÄÖÜäöü_ ]+$/, max: 100 }"
                                @input="updateDose2"
                         />
                         <a class="icon-delete"
@@ -134,7 +134,7 @@
                                :placeholder="t('asthmadiary', '3. Medication')"
                                :readonly="mode === select"
                                :value="activeMeasurement.medication3"
-                               v-validate="{ required: medication3Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               v-validate="{ required: medication3Required, regex:/^[a-zA-Z0-9ÄÖÜäöü_ ]+$/, max: 100 }"
                                @input="updateMedication3"/>
                         <a class="icon-delete"
                            v-on:click.prevent="updateMedication3(null)">
@@ -152,7 +152,7 @@
                                :placeholder="t('asthmadiary', '3. Dose')"
                                :readonly="mode === select"
                                :value="activeMeasurement.dose3"
-                               v-validate="{ required: dose3Required, regex:/^[a-zA-Z0-9_ ]+$/, max: 100 }"
+                               v-validate="{ required: dose3Required, regex:/^[a-zA-Z0-9ÄÖÜäöü_ ]+$/, max: 100 }"
                                @input="updateDose3"
                         />
                         <a class="icon-delete"
