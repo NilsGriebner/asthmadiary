@@ -33,7 +33,7 @@
 				  :placeholder="t('asthmadiary','Write down other symtpoms or notes')"
 				  :value="otherSymptoms"
 				  :disabled="mode === select"
-				  v-validate="{ regex:/^[a-zA-Z0-9_ .,]+$/, max: 100 }"
+				  v-validate="{ regex:/^[a-zA-Z0-9ÄÖÜäöü_ .,]+$/, max: 100 }"
 				  @input="updateOtherSymptoms">
 		</textarea>
 		</div>

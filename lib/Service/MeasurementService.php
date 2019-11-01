@@ -459,7 +459,7 @@ class MeasurementService {
 	 * @throws ParameterValidationException
 	 */
 	private function validateTextInput($text) {
-		if (preg_match('/^[a-zA-Z0-9 ]+$/', $text) === 0 ||
+		if (preg_match('/^[a-zA-Z0-9ÄÖÜäöü ]+$/', $text) === 0 ||
 			!is_string($text)) {
 			throw new ParameterValidationException();
 		}
@@ -472,7 +472,7 @@ class MeasurementService {
 	 * @throws ParameterValidationException
 	 */
 	private function validateOtherSymptoms($text) {
-		if (preg_match('/^[a-zA-Z0-9,. ]+$/', $text) === 0 ||
+		if (preg_match('/^[a-zA-Z0-9ÄÖÜäöü,. ]+$/', $text) === 0 ||
 			!is_string($text)) {
 			throw new ParameterValidationException();
 		}

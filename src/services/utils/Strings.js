@@ -40,7 +40,7 @@ export const MEASUREMENT_LIST_NA_VALUE = "NA";
 export const MEASUREMENT_INPUT_REQUIRED =
 	t('asthmadiary', 'For every medication a dose is required!');
 export const MEASUREMENT_INPUT_ALLOWED_CHARS =
-	t('asthmadiary', "Allowed characters: A-Z, a-z, 0-9");
+	t('asthmadiary', "Allowed characters: A-Z, a-z, Ä-ä, Ö-ö, Ü-ü, 0-9");
 export const MEASUREMENT_INPUT_WRONG_SELECT =
 	t('asthmadiary', "You provided a wrong value for Cough, Breathlessness or Phlegm!");
 export const MEASUREMENT_INPUT_ALLOWED_NUM =
