@@ -28,7 +28,7 @@ use OCA\AsthmaDiary\Db\Measurement;
 use OCA\AsthmaDiary\Db\Value;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Db\DoesNotExistException;
-use Test\TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group DB

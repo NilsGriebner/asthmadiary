@@ -24,30 +24,31 @@
 
 namespace OCA\AsthmaDiary\Tests\Unit\Controller;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Http\RedirectResponse;
+use OCP\IURLGenerator;
 
 use OCA\AsthmaDiary\Controller\PageController;
 
 
-class PageControllerTest extends PHPUnit_Framework_TestCase {
+class PageControllerTest extends TestCase {
 	private $controller;
 	private $userId = 'john';
 
 	public function setUp() {
 		$request = $this->getMockBuilder('OCP\IRequest')->getMock();
+		$urlGenerator = $this->createMock(IURLGenerator::class);
 
 		$this->controller = new PageController(
-			'asthmadiary', $request, $this->userId
+			'asthmadiary', $request, $urlGenerator, $this->userId
 		);
 	}
 
 	public function testIndex() {
 		$result = $this->controller->index();
 
-		$this->assertEquals('index', $result->getTemplateName());
-		$this->assertTrue($result instanceof TemplateResponse);
+		$this->assertTrue($result instanceof RedirectResponse);
 	}
 
 }

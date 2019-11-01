@@ -26,10 +26,10 @@ namespace OCA\AsthmaDiary\Tests\Unit\Controller;
 
 use OCA\AsthmaDiary\Controller\MeasurementController;
 use OCA\AsthmaDiary\Db\Measurement;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 
-class MeasurementControllerTest extends PHPUnit_Framework_TestCase {
+class MeasurementControllerTest extends TestCase {
 	protected $request;
 	protected $controller;
 	protected $service;
