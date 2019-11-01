@@ -24,11 +24,12 @@
 
 namespace OCA\AsthmaDiary\Tests\Integration\Controller;
 
+use PHPUnit\Framework\TestCase;
 use OCA\AsthmaDiary\Db\Measurement;
 use OCA\AsthmaDiary\Db\Value;
+use OCA\AsthmaDiary\Service\ParameterValidationException;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Db\DoesNotExistException;
-use Test\TestCase;
 
 /**
  * @group DB
@@ -191,5 +192,28 @@ class MeasurementIntegrationTest extends TestCase {
 		$this->expectException(DoesNotExistException::class);
 		$this->valueMapper->find($valueId, $this->userId);
 	}
+
+	public function testCreateExisting() {
+        $measurement = new Measurement();
+        $measurement->setDate($this->date);
+        $measurement->setUserId($this->userId);
+        $measurement->setCough(0);
+        $measurement->setBreathlessness(0);
+        $measurement->setPhlegm(0);
+        $measurement->setOtherSymptoms("non");
+        $measurement->setPrnMedicationPuffs(0);
+        $measurement->setMedication1("");
+        $measurement->setDose1("");
+        $measurement->setMedication2("");
+        $measurement->setDose2("");
+        $measurement->setMedication3("");
+        $measurement->setDose3("");
+
+        $this->measurementMapper->insert($measurement);
+        $this->measurementMapper->insert($measurement);
+
+        $this->expectException(ParameterValidationException::class);
+
+    }
 
 }
