@@ -22,7 +22,7 @@
  *
  */
 
-namespace OCA\AsthmaDiary\Tests\Integration\Controller;
+namespace OCA\AsthmaDiary\Tests\Integration\Db;
 
 use PHPUnit\Framework\TestCase;
 use OCA\AsthmaDiary\Db\Measurement;
@@ -209,11 +209,10 @@ class MeasurementIntegrationTest extends TestCase {
         $measurement->setMedication3("");
         $measurement->setDose3("");
 
-        $this->measurementMapper->insert($measurement);
-        $this->measurementMapper->insert($measurement);
-
         $this->expectException(ParameterValidationException::class);
 
+        $this->measurementMapper->insert($measurement);
+        $this->measurementMapper->insert($measurement);
     }
 
 }

@@ -31,7 +31,7 @@ use OCA\AsthmaDiary\Service\ValueService;
 
 class ValueController extends Controller {
 
-	private $service;
+	private $valueService;
 	private $userId;
 
 	use Errors;

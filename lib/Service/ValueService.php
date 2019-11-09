@@ -26,8 +26,9 @@ namespace OCA\AsthmaDiary\Service;
 
 use DateTime;
 use Exception;
-use OCA\AsthmaDiary\Db\Value;
 use OCA\AsthmaDiary\Db\ValueMapper;
+use OCP\ILogger;
+use OCA\AsthmaDiary\Db\Value;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 
@@ -35,9 +36,15 @@ use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 class ValueService {
 
 	private $mapper;
+	private $logger;
 
-	public function __construct(ValueMapper $mapper) {
+	const DATE_PARSE_ERROR_MESSAGE = "Unable to parse date of value";
+    const TIME_PARSE_ERROR_MESSAGE = "Unable to parse time of value";
+    const VALUE_ERROR_MESSAGE = "Value is out of bounds";
+
+	public function __construct(ILogger $logger, ValueMapper $mapper) {
 		$this->mapper = $mapper;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -190,6 +197,7 @@ class ValueService {
 
 		if (gettype($dt) === 'array') {
 			if (count($dt['errors']) !== 0) {
+			    $this->logError($this::DATE_PARSE_ERROR_MESSAGE);
 				throw new ParameterValidationException();
 			}
 		}
@@ -226,6 +234,7 @@ class ValueService {
 
 		if (gettype($dt) === 'array') {
 			if (count($dt['errors']) !== 0) {
+			    $this->logError($this::TIME_PARSE_ERROR_MESSAGE);
 				throw new ParameterValidationException();
 			}
 		}
@@ -242,6 +251,7 @@ class ValueService {
 			!is_numeric($value) ||
 			$value < 1 ||
 			$value > 900) {
+		    $this->logError($this::VALUE_ERROR_MESSAGE);
 			throw new ParameterValidationException();
 		}
 	}
@@ -257,4 +267,13 @@ class ValueService {
 			throw new ParameterValidationException();
 		}
 	}
+
+    /**
+     * Logs errors
+     *
+     * @param $msg
+     */
+	private function logError($msg) {
+	    $this->logger->error($msg);
+    }
 }

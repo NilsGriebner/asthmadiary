@@ -26,6 +26,7 @@ namespace OCA\AsthmaDiary\Service;
 
 use DateTime;
 use Exception;
+use OCP\ILogger;
 use OCA\AsthmaDiary\Db\Measurement;
 use OCA\AsthmaDiary\Db\MeasurementMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
@@ -35,9 +36,26 @@ use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 class MeasurementService {
 
 	private $mapper;
+	private $logger;
 
-	public function __construct(MeasurementMapper $mapper) {
+	const DATE_FORMAT_ERROR_MESSAGE = "Got wrong date format";
+	const DATE_PARSE_ERROR_MESSAGE = "Unable to parse date";
+	const PARAMETER_OUT_OF_RANGE_ERROR_MESSAGE = "Values for cough, phlegm and breathlessness must be between 0 and 3";
+	const STRING_INVALID_CHARACTER_ERROR_MESSAGE = "String contains invalid character";
+	const OTHER_SYMPTOMS_STRING_INVALID_CHARACTER = "OtherSymptoms string contains invalid character";
+	const PRN_OUT_OF_RANGE_ERROR_MESSAGE = "PrnMedicationPuffs integer must be between 0 and 100";
+	const TEXT_INPUT_LENGTH_ERROR_MESSAGE = "Only 100 characters are valid for text input";
+    const MEDICATION1_WITHOUT_DOSE1_ERROR_MESSAGE = "Got medication1 without dose1";
+	const DOSE1_WITHOUT_MEDICATION1_ERROR_MESSAGE = "Got dose1 without medication1";
+    const MEDICATION2_WITHOUT_DOSE2_ERROR_MESSAGE = "Got medication2 without dose2";
+    const DOSE2_WITHOUT_MEDICATION2_ERROR_MESSAGE = "Got dose2 without medication2";
+    const MEDICATION3_WITHOUT_DOSE3_ERROR_MESSAGE = "Got medication3 without dose3";
+    const DOSE3_WITHOUT_MEDICATION3_ERROR_MESSAGE = "Got dose3 without medication3";
+    const ID_NOT_NUM_ERROR_MESSAGE = "Got id which is not numeric";
+
+	public function __construct(ILogger $logger, MeasurementMapper $mapper) {
 		$this->mapper = $mapper;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -396,6 +414,7 @@ class MeasurementService {
 	 */
 	private function validateId($id) {
 		if ($id === null || !is_numeric($id)) {
+		    $this->logError($this::ID_NOT_NUM_ERROR_MESSAGE);
 			throw new ParameterValidationException();
 		}
 	}
@@ -414,11 +433,13 @@ class MeasurementService {
 		$dt = DateTime::createFromFormat("Y-m-d", $date);
 
 		if ($dt === false) {
+		    $this->logError($this::DATE_FORMAT_ERROR_MESSAGE);
 			throw new ParameterValidationException();
 		}
 
 		if (gettype($dt) === 'array') {
 			if (count($dt['errors']) !== 0) {
+                $this->logError($this::DATE_PARSE_ERROR_MESSAGE);
 				throw new ParameterValidationException();
 			}
 		}
@@ -448,6 +469,7 @@ class MeasurementService {
 			throw new ParameterValidationException();
 		}
 		if ($value < 0 || $value > 3) {
+		    $this->logError($this::PARAMETER_OUT_OF_RANGE_ERROR_MESSAGE);
 			throw new ParameterValidationException();
 		}
 	}
@@ -461,6 +483,7 @@ class MeasurementService {
 	private function validateTextInput($text) {
 		if (preg_match('/^[a-zA-Z0-9ÄÖÜäöü ]+$/', $text) === 0 ||
 			!is_string($text)) {
+		    $this->logError($this::STRING_INVALID_CHARACTER_ERROR_MESSAGE);
 			throw new ParameterValidationException();
 		}
 	}
@@ -474,6 +497,7 @@ class MeasurementService {
 	private function validateOtherSymptoms($text) {
 		if (preg_match('/^[a-zA-Z0-9ÄÖÜäöü,. ]+$/', $text) === 0 ||
 			!is_string($text)) {
+		    $this->logError($this::OTHER_SYMPTOMS_STRING_INVALID_CHARACTER);
 			throw new ParameterValidationException();
 		}
 	}
@@ -486,6 +510,7 @@ class MeasurementService {
 	 */
 	private function validatePrnMedicationPuffs($prn) {
 		if (!is_int($prn) || $prn > 100 || $prn < 0) {
+		    $this->logError($this::PRN_OUT_OF_RANGE_ERROR_MESSAGE);
 			throw new ParameterValidationException();
 		}
 	}
@@ -498,6 +523,7 @@ class MeasurementService {
 	 */
 	private function validateTextInputLength($text) {
 		if (strlen($text) > 100) {
+		    $this->logError($this::TEXT_INPUT_LENGTH_ERROR_MESSAGE);
 			throw new ParameterValidationException();
 		}
 	}
@@ -522,39 +548,54 @@ class MeasurementService {
 
 		if ($medication1 !== null) {
 			if ($dose1 === null) {
+			    $this->logError($this::MEDICATION1_WITHOUT_DOSE1_ERROR_MESSAGE);
 				throw new ParameterValidationException();
 			}
 		}
 
 		if ($dose1 !== null) {
 			if ($medication1 === null) {
+                $this->logError($this::DOSE1_WITHOUT_MEDICATION1_ERROR_MESSAGE);
 				throw new ParameterValidationException();
 			}
 		}
 
 		if ($medication2 !== null) {
 			if ($dose2 === null) {
+                $this->logError($this::MEDICATION2_WITHOUT_DOSE2_ERROR_MESSAGE);
 				throw new ParameterValidationException();
 			}
 		}
 
 		if ($dose2 !== null) {
 			if ($medication2 === null) {
+                $this->logError($this::DOSE2_WITHOUT_MEDICATION2_ERROR_MESSAGE);
 				throw new ParameterValidationException();
 			}
 		}
 
 		if ($medication3 !== null) {
 			if ($dose3 === null) {
+                $this->logError($this::MEDICATION3_WITHOUT_DOSE3_ERROR_MESSAGE);
 				throw new ParameterValidationException();
 			}
 		}
 
 		if ($dose3 !== null) {
 			if ($medication3 === null) {
+                $this->logError($this::DOSE3_WITHOUT_MEDICATION3_ERROR_MESSAGE);
 				throw new ParameterValidationException();
 			}
 		}
 	}
+
+    /**
+     * Logger error
+     *
+     * @param $msg
+     */
+	private function logError($msg) {
+	    $this->logger->error($msg);
+    }
 
 }
