@@ -24,7 +24,6 @@
 
 namespace OCA\AsthmaDiary\Tests\Integration\Controller;
 
-use OCA\AsthmaDiary\Service\MeasurementService;
 use OCA\AsthmaDiary\Service\ParameterValidationException;
 use OCP\AppFramework\App;
 use Test\TestCase;
@@ -81,7 +80,8 @@ class MeasurementServiceIntegrationTest extends TestCase {
 			'OCA\AsthmaDiary\Db\MeasurementMapper'
 		);
 
-		$this->service = new MeasurementService($this->mapper);
+		$this->service = $container->query(
+            'OCA\AsthmaDiary\Service\MeasurementService');
 	}
 
 	public function testCreateUserIdMissing() {

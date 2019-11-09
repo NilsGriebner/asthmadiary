@@ -22,7 +22,7 @@
  *
  */
 
-namespace OCA\AsthmaDiary\Tests\Integration\Controller;
+namespace OCA\AsthmaDiary\Tests\Integration\Db;
 
 use OCA\AsthmaDiary\Db\Measurement;
 use OCA\AsthmaDiary\Db\Value;

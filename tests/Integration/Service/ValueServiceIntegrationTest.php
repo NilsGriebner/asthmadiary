@@ -22,11 +22,9 @@
  *
  */
 
-namespace OCA\AsthmaDiary\Tests\Integration\Controller;
+namespace OCA\AsthmaDiary\Tests\Integration\Service;
 
-use OCA\AsthmaDiary\Db\Value;
 use OCA\AsthmaDiary\Service\ParameterValidationException;
-use OCA\AsthmaDiary\Service\ValueService;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Db\DoesNotExistException;
 use Test\TestCase;
@@ -66,7 +64,9 @@ class ValueServiceIntegrationTest extends TestCase {
 			'OCA\AsthmaDiary\Db\ValueMapper'
 		);
 
-		$this->service = new ValueService($this->mapper);
+        $this->service = $container->query(
+            'OCA\AsthmaDiary\Service\ValueService'
+        );
 	}
 
 	public function testCreateDateMissing() {
