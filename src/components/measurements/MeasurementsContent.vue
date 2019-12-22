@@ -113,7 +113,7 @@
 	}
 </script>
 <template>
-    <div class="app-content-detail">
+    <div class="app-content-details">
         <MeasurementsContentHeader/>
         <div id="asthmadiary_measurement_form_wrapper">
             <div id="asthmadiary_measurement_form_section_wrapper">

@@ -23,12 +23,8 @@
 
 @media only screen and (max-width: 768px) {
 
-  .app-content-detail {
-    width: 100%
-  }
-
-  .app-content-list {
-    width: 100% !important;
+  html {
+    overflow-x: hidden;
   }
 
   .asthmadiary_flex_row {
@@ -71,11 +67,6 @@
 
   #asthmadiary_measurement_content_header_full_icons {
     justify-content: space-around !important;
-  }
-
-  #asthmadiary_measurement_content_header_full_text {
-    width: 100% !important;
-    padding-left: 8%;
   }
 
   .asthmadiary_navigation_scroll_button {
