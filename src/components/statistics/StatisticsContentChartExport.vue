@@ -44,6 +44,8 @@
 	import jsPDF from 'jspdf';
 	import {Parser} from 'json2csv';
 	import {saveAs} from 'file-saver';
+	import {mapState} from 'vuex';
+	import moment from 'moment';
 
 	import {Actions, ActionButton} from 'nextcloud-vue';
 
@@ -58,6 +60,13 @@
 
 		models: {
 			event: 'create-monthly-report'
+		},
+
+		computed: {
+			...mapState({
+				activeMeasurement: state => state.measurements.activeMeasurement,
+				currentLocale: state => state.measurements.currentLocale,
+			}),
 		},
 
 		data () {
@@ -81,10 +90,14 @@
 
 		methods: {
 			createPdf () {
-				this.pdf = new jsPDF('portrait');
+				this.pdf = new jsPDF('landscape');
+
+				this.pdf.text(t("asthmadiary", "Month") + ": " + this.getMonth() + " " + this.getYear(), 10, 20);
+				this.pdf.text(t("asthmadiary", "User") + ": " + this.activeMeasurement.user_id, 10, 30);
+
 				let pic = $(`#${this.canvasId}`);
 				let img = pic[0].toDataURL('image/png', 1.0);
-				this.pdf.addImage(img, 'PNG', 20, 10, 170, 70);
+				this.pdf.addImage(img, 'PNG', 10, 50, 280, 70);
 				this.pdf.save('export.pdf');
 			},
 
@@ -105,6 +118,16 @@
 
 			createMonthlyReport () {
 				this.$emit('create-monthly-report');
+			},
+
+			getMonth () {
+				const time = moment(this.activeMeasurement.date).locale(this.currentLocale);
+				return time.format('MMMM');
+			},
+
+			getYear () {
+				const time = moment(this.activeMeasurement.date).locale(this.currentLocale);
+				return time.format('YYYY');
 			},
 		},
 	}
