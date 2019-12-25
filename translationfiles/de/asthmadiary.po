@@ -160,3 +160,9 @@ msgstr "Alle Diagramme exportieren"
 
 msgid "Monthly statistics for "
 msgstr "Monatliche Statistik für "
+
+msgid "User"
+msgstr "Benutzer"
+
+msgid "Month"
+msgstr "Monat"

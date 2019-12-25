@@ -48,6 +48,8 @@ OC.L10N.register(
     "Export PDF" : "PDF exportieren",
     "Export CSV" : "CSV exportieren",
     "Export all charts" : "Alle Diagramme exportieren",
-    "Monthly statistics for " : "Monatliche Statistik für "
+    "Monthly statistics for " : "Monatliche Statistik für ",
+    "User" : "Benutzer",
+    "Month" : "Monat"
 },
 "");
