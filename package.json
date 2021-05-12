@@ -22,7 +22,7 @@
   "license": "agpl",
   "dependencies": {
     "axios": "^0.18.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "file-saver": "^2.0.2",
     "json2csv": "^4.5.4",
     "jspdf": "^1.5.3",
